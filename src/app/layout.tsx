@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { Montserrat } from "next/font/google";
 import Header from "@/components/header";
 import BackToTop from "@/components/back-to-top";
-import GoogleAnalytics from "../components/googleAnalytics";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const montserrat = Montserrat({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -31,13 +31,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={montserrat.className}>
-        {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS ? (
-            <GoogleAnalytics ga_id= 
-            {process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS} />
-          ) : null}
         <Header />
         <main className="container lg:px-28">{children}</main>
         <BackToTop />
+        <GoogleAnalytics gaId='G-LC1L1PHWKJ' />
       </body>
     </html>
   );
